@@ -1,4 +1,4 @@
-import App from './App';
-import './index.scss';
+import { createApp } from 'vue';
+import App from './App.vue';
 
-const app = new App();
+createApp(App).mount('#app');

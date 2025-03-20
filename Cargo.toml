@@ -1,5 +1,8 @@
 [workspace]
 members = [
-    "src/trust-chat-platform-backend"
+  "src/registry-canister",
+  "src/model-canister-template"
 ]
+
+# resolver を明示的に設定
 resolver = "2"

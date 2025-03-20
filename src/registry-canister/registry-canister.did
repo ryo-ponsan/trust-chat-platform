@@ -1,0 +1,15 @@
+type ModelInfo = record {
+    id: text;
+    name: text;
+    description: text;
+    provider: text;
+    canister_id: principal;
+    pricing: text;
+    created_at: nat64;
+};
+
+service : {
+    "register_model": (ModelInfo) -> (variant { Ok; Err: text });
+    "list_models": () -> (vec ModelInfo) query;
+    "get_model": (text) -> (opt ModelInfo) query;
+}

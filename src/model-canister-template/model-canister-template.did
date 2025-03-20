@@ -1,0 +1,20 @@
+type ChatMessage = record {
+    role: text;
+    content: text;
+};
+
+type ModelConfig = record {
+    name: text;
+    description: text;
+    provider: text;
+    api_endpoint: text;
+    api_key: text;
+    pricing: text;
+};
+
+service : {
+    "initialize": (ModelConfig) -> ();
+    "get_model_info": () -> (ModelConfig) query;
+    "chat": (text) -> (text);
+    "get_chat_history": () -> (vec ChatMessage) query;
+}

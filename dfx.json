@@ -1,19 +1,37 @@
 {
   "canisters": {
-    "trust-chat-platform-backend": {
-      "candid": "src/trust-chat-platform-backend/trust-chat-platform-backend.did",
-      "package": "trust-chat-platform-backend",
-      "type": "rust"
+    "registry-canister": {
+      "type": "rust",
+      "package": "registry-canister",
+      "candid": "src/registry-canister/registry-canister.did"
+    },
+    "model-canister-template": {
+      "type": "rust",
+      "package": "model-canister-template",
+      "candid": "src/model-canister-template/model-canister-template.did"
+    },
+    "gpt4-mini-canister": {
+      "type": "rust",
+      "package": "model-canister-template",
+      "candid": "src/model-canister-template/model-canister-template.did",
+      "init_arg": "(record { name = \"GPT-4 Mini\"; description = \"OpenAI GPT-4 Mini model with fine-tuned parameters\"; provider = \"OpenAI\"; api_endpoint = \"https://api.openai.com/v1/chat/completions\"; api_key = \"\"; pricing = \"Free\" })"
+    },
+    "claude-canister": {
+      "type": "rust",
+      "package": "model-canister-template",
+      "candid": "src/model-canister-template/model-canister-template.did",
+      "init_arg": "(record { name = \"Claude 3.5 Sonnet\"; description = \"Anthropic Claude 3.5 Sonnet with enhanced reasoning\"; provider = \"Anthropic\"; api_endpoint = \"https://api.anthropic.com/v1/messages\"; api_key = \"\"; pricing = \"Free\" })"
+    },
+    "o1-mini-canister": {
+      "type": "rust",
+      "package": "model-canister-template",
+      "candid": "src/model-canister-template/model-canister-template.did",
+      "init_arg": "(record { name = \"O1 Mini\"; description = \"OpenAI O1 Mini model with custom parameters\"; provider = \"OpenAI\"; api_endpoint = \"https://api.openai.com/v1/chat/completions\"; api_key = \"\"; pricing = \"Free\" })"
     },
     "trust-chat-platform-frontend": {
-      "dependencies": [
-        "trust-chat-platform-backend"
-      ],
-      "source": [
-        "src/trust-chat-platform-frontend/dist"
-      ],
       "type": "assets",
-      "workspace": "trust-chat-platform-frontend"
+      "source": ["src/trust-chat-platform-frontend/dist"],
+      "dependencies": ["registry-canister"]
     }
   },
   "defaults": {
@@ -21,7 +39,5 @@
       "args": "",
       "packtool": ""
     }
-  },
-  "output_env_file": ".env",
-  "version": 1
+  }
 }

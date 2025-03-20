@@ -1,0 +1,27 @@
+{
+  "canisters": {
+    "trust-chat-platform-backend": {
+      "candid": "src/trust-chat-platform-backend/trust-chat-platform-backend.did",
+      "package": "trust-chat-platform-backend",
+      "type": "rust"
+    },
+    "trust-chat-platform-frontend": {
+      "dependencies": [
+        "trust-chat-platform-backend"
+      ],
+      "source": [
+        "src/trust-chat-platform-frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "trust-chat-platform-frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}

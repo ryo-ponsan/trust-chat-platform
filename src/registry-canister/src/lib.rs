@@ -7,10 +7,14 @@ use std::collections::HashMap;
 pub struct ModelInfo {
     pub id: String,
     pub name: String,
+    pub character_name: String,
+    pub base_model: String,
     pub description: String,
     pub provider: String,
+    pub api_endpoint: String,
     pub canister_id: Principal,
     pub pricing: String,
+    pub trust_score: u8,
     pub created_at: u64,
 }
 
@@ -25,6 +29,14 @@ fn register_model(model: ModelInfo) -> Result<(), String> {
     // 簡易的な検証（実際の実装ではより厳密な検証が必要）
     if model.canister_id != caller {
         return Err("Only the model canister itself can register".to_string());
+    }
+    
+    if model.character_name.is_empty() {
+        return Err("Character name is required".to_string());
+    }
+    
+    if model.base_model.is_empty() {
+        return Err("Base model information is required".to_string());
     }
     
     MODELS.with(|models| {

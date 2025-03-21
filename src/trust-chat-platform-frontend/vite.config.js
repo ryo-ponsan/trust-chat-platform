@@ -2,8 +2,9 @@ import { defineConfig } from 'vite';
 import { fileURLToPath, URL } from 'url';
 import environment from 'vite-plugin-environment';
 import dotenv from 'dotenv';
-import vue from '@vitejs/plugin-vue';
+import vue2 from '@vitejs/plugin-vue2';
 import path from 'path';
+import { nodePolyfills } from 'vite-plugin-node-polyfills';
 
 dotenv.config({ path: '../../.env' });
 
@@ -11,11 +12,12 @@ export default defineConfig({
   plugins: [
     environment("all", { prefix: "CANISTER_" }),
     environment("all", { prefix: "DFX_" }),
-    vue(),
+    vue2(),
+    nodePolyfills()
   ],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
+      '@': path.resolve(__dirname, 'src'),
       "declarations": fileURLToPath(
         new URL("../declarations", import.meta.url)
       ),
@@ -42,6 +44,9 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/api/, '')
       }
     },
+    hmr: {
+      overlay: false
+    }
   },
   publicDir: "assets",
 });

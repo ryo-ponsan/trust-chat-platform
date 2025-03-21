@@ -14,5 +14,11 @@
   "type": "module",
   "workspaces": [
     "src/trust-chat-platform-frontend"
-  ]
+  ],
+  "dependencies": {
+    "@vitejs/plugin-vue2": "^2.3.3",
+    "vite-plugin-node-polyfills": "^0.23.0",
+    "vue": "^2.7.14",
+    "vue-router": "^3.6.5"
+  }
 }

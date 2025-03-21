@@ -11,20 +11,28 @@ pub struct ChatMessage {
 
 #[derive(CandidType, Deserialize, Clone)]
 pub struct ModelConfig {
+    pub id: String,
     pub name: String,
+    pub character_name: String,
+    pub base_model: String,
     pub description: String,
     pub provider: String,
     pub api_endpoint: String,
+    pub system_prompt: String,
     pub api_key: String,
     pub pricing: String,
 }
 
 thread_local! {
     static CONFIG: RefCell<ModelConfig> = RefCell::new(ModelConfig {
+        id: "".to_string(),
         name: "Default Model".to_string(),
+        character_name: "".to_string(),
+        base_model: "".to_string(),
         description: "A template for AI model canisters".to_string(),
         provider: "Unknown".to_string(),
         api_endpoint: "".to_string(),
+        system_prompt: "".to_string(),
         api_key: "".to_string(),
         pricing: "Free".to_string(),
     });
@@ -42,7 +50,7 @@ fn initialize(config: ModelConfig) {
 }
 
 #[query]
-fn get_model_info() -> ModelConfig {
+pub fn get_model_info() -> ModelConfig {
     CONFIG.with(|c| c.borrow().clone())
 }
 

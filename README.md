@@ -199,6 +199,63 @@ npm start
 
 これにより、`http://localhost:8080` でサーバーが起動し、ポート4943のレプリカにAPIリクエストがプロキシされる。
 
+### デバッグと修正の手順
+
+開発中に問題が発生した場合は、以下の手順でデバッグと修正を行うことができる：
+
+1. **ログの確認**:
+   ```bash
+   dfx canister call <canister_name> get_logs
+   ```
+   各キャニスターには `get_logs` メソッドが実装されており、内部ログを確認できる。
+
+2. **コード修正後の再デプロイ**:
+   ```bash
+   # 特定のキャニスターのみ再デプロイ
+   dfx deploy <canister_name>
+   
+   # または全キャニスターを再デプロイ
+   dfx deploy
+   ```
+
+3. **キャニスターの状態確認**:
+   ```bash
+   dfx canister status <canister_id>
+   ```
+   キャニスターの実行状態、メモリ使用量、サイクル残高などを確認できる。
+
+4. **キャニスターのリセット**:
+   問題が解決しない場合は、キャニスターをリセットして初期状態に戻すことができる：
+   ```bash
+   dfx canister stop <canister_name>
+   dfx canister delete <canister_name>
+   dfx deploy <canister_name>
+   ```
+
+5. **フロントエンドのデバッグ**:
+   ブラウザの開発者ツールを使用して、コンソールログやネットワークリクエストを確認する。
+   ```bash
+   # 開発モードでフロントエンドを起動
+   cd src/trust-chat-platform-frontend
+   npm run dev
+   ```
+
+6. **Candid UIの活用**:
+   各キャニスターのCandid UIにアクセスして、APIを直接テストできる：
+   ```
+   http://localhost:4943/?canisterId=<canister_id>&id=<canister_id>
+   ```
+
+7. **レプリカの再起動**:
+   レプリカに問題がある場合は、クリーンな状態で再起動する：
+   ```bash
+   dfx stop
+   dfx start --clean --background
+   dfx deploy
+   ```
+
+これらの手順を組み合わせることで、ほとんどの開発上の問題を特定し解決できる。
+
 ### ICネットワークへのデプロイ
 
 ICネットワークにデプロイするには、以下のコマンドを使用する：

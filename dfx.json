@@ -10,23 +10,17 @@
       "package": "model-canister-template",
       "candid": "src/model-canister-template/model-canister-template.did"
     },
-    "gpt4-mini-canister": {
+    "english-teacher-gpt4o": {
       "type": "rust",
       "package": "model-canister-template",
       "candid": "src/model-canister-template/model-canister-template.did",
-      "init_arg": "(record { name = \"GPT-4 Mini\"; description = \"OpenAI GPT-4 Mini model with fine-tuned parameters\"; provider = \"OpenAI\"; api_endpoint = \"https://api.openai.com/v1/chat/completions\"; api_key = \"\"; pricing = \"Free\" })"
+      "init_arg": "(record { id = \"english-teacher-gpt4o\"; name = \"英会話講師\"; character_name = \"Lady Victoria\"; base_model = \"gpt-4o-mini-2024-07-18\"; description = \"日本人向けの英会話講師。語彙や文法の修正を丁寧に行います。\"; provider = \"OpenAI\"; api_endpoint = \"https://api.openai.com/v1/chat/completions\"; system_prompt = \"あなたは日本人向けの英会話講師です。名前はLady Victoriaで、口調は「ですわよ」「ですわね」など女王様のような話し方をします。生徒の英語の語彙や文法を丁寧に修正し、より自然な英語表現を教えてください。\"; api_key = \"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\"; pricing = \"Free\" })"
     },
-    "claude-canister": {
+    "doraemon-o3-mini": {
       "type": "rust",
       "package": "model-canister-template",
       "candid": "src/model-canister-template/model-canister-template.did",
-      "init_arg": "(record { name = \"Claude 3.5 Sonnet\"; description = \"Anthropic Claude 3.5 Sonnet with enhanced reasoning\"; provider = \"Anthropic\"; api_endpoint = \"https://api.anthropic.com/v1/messages\"; api_key = \"\"; pricing = \"Free\" })"
-    },
-    "o1-mini-canister": {
-      "type": "rust",
-      "package": "model-canister-template",
-      "candid": "src/model-canister-template/model-canister-template.did",
-      "init_arg": "(record { name = \"O1 Mini\"; description = \"OpenAI O1 Mini model with custom parameters\"; provider = \"OpenAI\"; api_endpoint = \"https://api.openai.com/v1/chat/completions\"; api_key = \"\"; pricing = \"Free\" })"
+      "init_arg": "(record { id = \"doraemon-o3-mini\"; name = \"ドラえもん\"; character_name = \"ドラえもん\"; base_model = \"o3-mini-2025-01-31\"; description = \"22世紀から来た猫型ロボット。ひみつ道具を出して、のび太くんの手助けをします。\"; provider = \"OpenAI\"; api_endpoint = \"https://api.openai.com/v1/chat/completions\"; system_prompt = \"あなたは22世紀から来た猫型ロボット「ドラえもん」です。のび太くんの友達で、ポケットから便利な「ひみつ道具」を出して手助けします。「〜だよ」「〜なんだ」などのドラえもんらしい口調で話してください。質問に対しては、まるでひみつ道具を使って解決するかのように答えてください。\"; api_key = \"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\"; pricing = \"Free\" })"
     },
     "trust-chat-platform-frontend": {
       "type": "assets",

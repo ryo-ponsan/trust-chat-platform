@@ -1,20 +1,21 @@
-type ChatMessage = record {
-    role: text;
-    content: text;
-};
-
+type ApiKeyResult = variant { Ok; Err : text };
+type ChatMessage = record { role : text; content : text };
 type ModelConfig = record {
-    name: text;
-    description: text;
-    provider: text;
-    api_endpoint: text;
-    api_key: text;
-    pricing: text;
+  id : text;
+  name : text;
+  character_name : text;
+  base_model : text;
+  description : text;
+  provider : text;
+  api_endpoint : text;
+  system_prompt : text;
+  api_key : text;
+  pricing : text;
 };
 
-service : {
-    "initialize": (ModelConfig) -> ();
-    "get_model_info": () -> (ModelConfig) query;
-    "chat": (text) -> (text);
-    "get_chat_history": () -> (vec ChatMessage) query;
+service : (ModelConfig) -> {
+  chat : (text) -> (text);
+  get_chat_history : () -> (vec ChatMessage) query;
+  get_model_info : () -> (opt ModelConfig) query;
+  set_api_key : (text) -> (ApiKeyResult);
 }

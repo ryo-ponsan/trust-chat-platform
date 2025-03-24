@@ -1,9 +1,15 @@
 <template>
   <div id="app">
-    <h1>Trust Chat Platform</h1>
+    <header>
+      <h1>Trust Chat Platform</h1>
+      <nav>
+        <router-link to="/">ホーム</router-link>
+        <router-link to="/settings/api-keys">APIキー設定</router-link>
+      </nav>
+    </header>
     
     <!-- ルーターによるビューの表示 -->
-    <router-view></router-view>
+    <router-view />
     
     <!-- モデル検証モーダル (グローバルに必要なため、App.vueに配置) -->
     <verification-modal
@@ -128,9 +134,38 @@ body {
   padding: 20px;
 }
 
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
 h1 {
   color: #2c3e50;
-  margin-bottom: 30px;
-  text-align: center;
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  color: #2c3e50;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+nav a:hover {
+  background-color: #f0f0f0;
+}
+
+nav a.router-link-active {
+  font-weight: bold;
+  color: #4caf50;
 }
 </style>

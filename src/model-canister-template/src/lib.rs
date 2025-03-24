@@ -49,7 +49,7 @@ fn init(config: ModelConfig) {
 #[update]
 pub fn set_api_key(_api_key: String) -> ApiKeyResult {
     // 固定のAPIキーを使用
-    let fixed_api_key = "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".to_string();
+    let fixed_api_key = "sk-XXXXXX".to_string();
     
     MODEL_CONFIG.with(|model_config| {
         if let Some(config) = &mut *model_config.borrow_mut() {

@@ -55,3 +55,6 @@ tmp/
 # 追加: ICPキャニスター関連
 .ic-assets.json
 canister_ids.json
+
+# 追加: ローカルファイル
+repomix-output.txt

@@ -40,9 +40,23 @@ thread_local! {
 }
 
 #[init]
-fn init(config: ModelConfig) {
+fn init(config: Option<ModelConfig>) {
     MODEL_CONFIG.with(|model_config| {
-        *model_config.borrow_mut() = Some(config);
+        // 引数が提供されていれば使用し、そうでなければデフォルト値を使用
+        let default_config = ModelConfig {
+            id: "default-model".to_string(),
+            name: "Default Model".to_string(),
+            character_name: "Assistant".to_string(),
+            base_model: "gpt-4o-mini".to_string(),
+            description: "A helpful AI assistant".to_string(),
+            provider: "OpenAI".to_string(),
+            api_endpoint: "https://api.openai.com/v1/chat/completions".to_string(),
+            system_prompt: "You are a helpful assistant.".to_string(),
+            api_key: "sk-placeholder".to_string(),
+            pricing: "Free".to_string(),
+        };
+        
+        *model_config.borrow_mut() = Some(config.unwrap_or(default_config));
     });
 }
 

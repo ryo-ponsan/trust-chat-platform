@@ -6,6 +6,15 @@ Trust Chat Platform は、Internet Computer Protocol (ICP) 上に構築された
 
 ![サンプル動作](assets/trust_chat.gif)
 
+URLs:
+  Frontend canister via browser:
+    trust-chat-platform-frontend: https://ckvys-wqaaa-aaaae-qcu5a-cai.icp0.io/
+  Backend canister via Candid interface:
+    doraemon-o3-mini: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=3s4yq-viaaa-aaaan-qzyia-cai
+    english-teacher-gpt4o: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=td5pj-miaaa-aaaap-qpyiq-cai
+    model-canister-template: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=q43x6-6iaaa-aaaao-a4cja-cai
+    registry-canister: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=earrz-faaaa-aaaah-qqagq-cai
+
 将来的には、地方ごとに特化したローカル LLM が「八百万の神々」のように出現すると考えられるため、そういった AI エコシステムの基盤として活用されることを目指しています。
 
 ## プロジェクトの魅力：分散型 AI の新時代

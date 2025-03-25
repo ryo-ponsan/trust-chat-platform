@@ -149,4 +149,4 @@ Trust Chat Platform は以下のキャニスター（スマートコントラク
 - [Internet Computer ドキュメント](https://internetcomputer.org/docs/current/developer-docs/setup/deploy-locally)
 - [SDK 開発者ツール](https://internetcomputer.org/docs/current/developer-docs/setup/install)
 - [Rust Canister 開発ガイド](https://internetcomputer.org/docs/current/developer-docs/backend/rust/)
-- [Candid 入門](https://internetcomputer.org/docs/current/developer-docs/backend/candid/)
+- [【Internet Computer】メインネットにアプリをデプロイする方法](https://zenn.dev/taka101/articles/717529cb1a6490)

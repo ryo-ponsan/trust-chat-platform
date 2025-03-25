@@ -3,6 +3,7 @@
     <h2>APIキー設定</h2>
     <p class="description">
       OpenAI APIキーは既に設定されています。将来的にはこの画面でAPIキーを変更できるようになります。
+      また、モデル開発者や事業者ごとのAPIキーを設定できるようにします。
     </p>
     
     <div class="api-key-form">
@@ -21,56 +22,17 @@
       </div>
       
       <div class="message success">
-        APIキーは設定済みです。モデルを使用できます。
+        APIキーは設定済みです。モデルを使用できます。（※現状APIキーを使ったチャットはできません）
       </div>
     </div>
     
     <div class="security-info">
       <h3>セキュリティ情報 <button class="toggle-details" @click="toggleSecurityDetails">{{ showSecurityDetails ? '詳細を隠す' : '詳細を表示' }}</button></h3>
-      <ul>
+      <ul v-if="showSecurityDetails">
         <li>APIキーはキャニスターに保存されます。</li>
         <li>キーはモデルキャニスターとの通信にのみ使用され、フロントエンドには保存されません。</li>
       </ul>
-      
-      <div v-if="showSecurityDetails" class="technical-details">
-        <h4>技術的な詳細</h4>
-        <p>Internet Computer (ICP) 上でのAPIキーの保存と使用について：</p>
-        
-        <div class="detail-section">
-          <h5>1. キャニスターでの保存方法</h5>
-          <p>APIキーは各モデルキャニスター内の安全なメモリ領域に保存されます。具体的には：</p>
-          <ul>
-            <li>キーはキャニスターの安定変数（stable variable）に保存され、キャニスターのアップグレード時にも保持されます。</li>
-            <li>キーはキャニスター内部でのみアクセス可能で、他のキャニスターや外部からは直接読み取れません。</li>
-            <li>キャニスターのコントローラー（管理者）のみがキャニスターの状態を変更できます。</li>
-          </ul>
-        </div>
-        
-        <div class="detail-section">
-          <h5>2. APIキーの使用フロー</h5>
-          <p>ユーザーがチャットメッセージを送信すると、以下のフローでAPIキーが使用されます：</p>
-          <ol>
-            <li>ユーザーのメッセージはフロントエンドからモデルキャニスターに送信されます。</li>
-            <li>モデルキャニスターは内部に保存されたAPIキーを使用して、OpenAI APIにリクエストを送信します。</li>
-            <li>OpenAI APIからのレスポンスはモデルキャニスターを経由してユーザーに返されます。</li>
-            <li>このプロセス全体を通じて、APIキーはフロントエンドに公開されることはありません。</li>
-          </ol>
-          <div class="flow-diagram-text">
-            ユーザー → フロントエンド → モデルキャニスター（APIキーを使用） → OpenAI API → モデルキャニスター → フロントエンド → ユーザー
-          </div>
-        </div>
-        
-        <div class="detail-section">
-          <h5>3. セキュリティ上の考慮事項</h5>
-          <p>Internet Computer上でのAPIキー管理には以下の特徴があります：</p>
-          <ul>
-            <li><strong>分離性：</strong> 各キャニスターは独立した実行環境を持ち、他のキャニスターからの干渉を受けません。</li>
-            <li><strong>コンセンサス：</strong> キャニスターの状態変更はICP上の複数のノードによる合意（コンセンサス）を経て行われます。</li>
-            <li><strong>監査可能性：</strong> キャニスターのコードは検証可能で、APIキーの使用方法を監査できます。</li>
-            <li><strong>制限事項：</strong> キャニスターのコードが悪意を持って変更された場合、APIキーが漏洩するリスクがあります。そのため、信頼できるキャニスターのみを使用することが重要です。</li>
-          </ul>
-        </div>
-      </div>
+      <p class="note">※現状APIキーを使ったチャットはできません。</p>
     </div>
     
     <div class="api-key-instructions">

@@ -1,5 +1,9 @@
 <template>
   <div class="home-container">
+    <div class="platform-tagline">
+      信頼のあるAIチャットボットをあなたに - 安全で透明性のある会話体験を
+    </div>
+    
     <div class="tabs">
       <div
         v-for="tab in tabs"
@@ -37,6 +41,10 @@
 
     <div v-if="activeTab === 'my-models'" class="my-models">
       <h2>My AI Characters</h2>
+      <div class="development-notice">
+        <p>🚧 この機能は現在開発中です 🚧</p>
+        <p>あなた独自のAIモデルを管理する機能は近日公開予定です。</p>
+      </div>
       <div v-if="loadingMyModels" class="loading-indicator">
         Loading your models...
       </div>
@@ -59,6 +67,10 @@
 
     <div v-if="activeTab === 'deploy'" class="deploy">
       <h2>Deploy New AI Character</h2>
+      <div class="development-notice">
+        <p>🚧 この機能は現在開発中です 🚧</p>
+        <p>あなたの個性のあるAIモデルを信頼性のある形で提供しよう</p>
+      </div>
       <model-form
         :model-form="modelForm"
         @update:model-form="updateModelForm"
@@ -214,6 +226,32 @@ export default {
 
 .error-message {
   color: #e74c3c;
+}
+
+.platform-tagline {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 30px;
+  font-style: italic;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.development-notice {
+  background-color: #fff3cd;
+  border: 1px solid #ffeeba;
+  color: #856404;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.development-notice p:first-child {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
 }
 </style>
 

@@ -13,7 +13,7 @@ type ModelConfig = record {
   pricing : text;
 };
 
-service : (ModelConfig) -> {
+service : (opt ModelConfig) -> {
   chat : (text) -> (text);
   get_chat_history : () -> (vec ChatMessage) query;
   get_model_info : () -> (opt ModelConfig) query;

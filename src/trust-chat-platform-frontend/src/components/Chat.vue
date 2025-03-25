@@ -23,6 +23,12 @@
         </div>
       </div>
       
+      <!-- モックモデル通知 -->
+      <div class="mock-model-notice">
+        <p>⚠️ デモ用モックモデル ⚠️</p>
+        <p>現在、このチャットはデモンストレーション目的のモックレスポンスを使用しています。実際のAPIは接続されていません。</p>
+      </div>
+      
       <div class="chat-messages" ref="messagesContainer">
         <div v-if="messages.length === 0" class="empty-chat">
           <p>{{ modelInfo.characterName }}とのチャットを開始しましょう。</p>
@@ -32,7 +38,7 @@
           v-for="(message, index) in messages"
           :key="index"
           :message="message"
-          :model-info="modelInfo"
+          :character-name="modelInfo.characterName"
         />
       </div>
       
@@ -273,5 +279,24 @@ export default {
 .chat-input button:disabled {
   background-color: #cccccc;
   cursor: not-allowed;
+}
+
+.mock-model-notice {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+  padding: 10px 15px;
+  margin: 0 15px 15px 15px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.mock-model-notice p:first-child {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.mock-model-notice p:last-child {
+  margin: 0;
 }
 </style>
